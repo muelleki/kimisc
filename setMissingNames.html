@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>setMissingNames. kimisc 0.2-1.4</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+Hadley Wickham, Kirill Müller
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">kimisc 0.2-1.4</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Set the Missing Names in an Object</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>setMissingNames(object, nm)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>object</dt>
+      <dd>an object for which a names attribute will be meaningful</dd>
+      <dt>nm</dt>
+      <dd>a character vector of names to assign to the object</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+An object of the same sort as <code>object</code> with the new names
+  assigned to the unnamed elements.
+</dl></p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>This function is an enhanced version of <code><a href='http://www.inside-r.org/r-doc/stats/setNames'>setNames</a></code>
+  in the sense that the elements that already have names are not renamed.</p>
+  
+    </div>
+
+    <div class="References">
+      <h2>References</h2>
+
+      <p><a href = 'http://stackoverflow.com/a/5043280/946850'>http://stackoverflow.com/a/5043280/946850</a></p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>setMissingNames(c(a=1, b=2, 3), letters[2:4])
+</div>
+<div class='output'>a b d 
+1 2 3 
+</div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>setMissingNames</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+<a href='http://www.inside-r.org/r-doc/stats/setNames'>setNames</a>
+
+    
+    <h2>Author</h2>
+    
+Hadley Wickham, Kirill Müller
+
+    
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://getbootstrap.com">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>seconds.to.hms. kimisc 0.2-1.4</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">kimisc 0.2-1.4</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Converts a time value given as number of seconds since midnight to the
+  H:M:S format</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>seconds.to.hms(x)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>x</dt>
+      <dd>A (vector of) numbers.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+A (vector of) character values of the same length as <code>x</code>.
+</dl></p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>This function is very similar to <code>strftime</code> with the
+  <code>%X</code> conversion specification. Hour values larger than 24 are
+  permitted. Fractions will be rounded down to the next integer. Non-numeric
+  values are coerced to <code>NA</code> with a warning.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>seconds.to.hms(c(1, 60, 3600.5))
+</div>
+<div class='output'>[1] &quot;00:00:01&quot; &quot;00:01:00&quot; &quot;01:00:00&quot;
+</div>
+<div class='input'>seconds.to.hms(c(100000, -4000.5))
+</div>
+<div class='output'>[1] &quot;27:46:40&quot;  &quot;-01:06:41&quot;
+</div>
+<div class='input'>seconds.to.hms(&quot;invalid&quot;)
+</div>
+<strong class='warning'>Warning message:
+NAs introduced by coercion</strong>
+<div class='output'>[1] NA
+</div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>seconds.to.hms</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+<a href='http://www.inside-r.org/r-doc/base/strptime'>strftime</a>
+
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://getbootstrap.com">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
