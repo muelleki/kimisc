@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>Index. kimisc 0.2-1.4</title>
+<title>Index. kimisc 0.2-3</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -14,13 +14,25 @@
 <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
   </head>
 
   <body>
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">kimisc 0.2-1.4</a>
+      <a class="brand" href="#">kimisc 0.2-3</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -30,7 +42,7 @@
   </div>
 </div>
 <style>#forkongithub a{background:#500;color:#ccc;text-decoration:none;font-family:arial,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#711;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:fixed;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}</style>
-<span id="forkongithub"><a href="https://github.com/krlmlr/kimisc">Fork me on GitHub!</a></span>
+<span id="forkongithub"><a href="">Fork me on GitHub!</a></span>
 
 
     <div class="container">
@@ -40,14 +52,25 @@
       
       <div class="row">
   <div class="span8">
-    <h1>kimisc <a href="https://app.wercker.com/project/bykey/956d581f6bb8958ec85fd7d2585d138b"><img src="https://app.wercker.com/status/956d581f6bb8958ec85fd7d2585d138b/s/master" alt="wercker status" title="wercker status"/></a> <a href="https://ci.appveyor.com/project/krlmlr/kimisc"><img src="https://ci.appveyor.com/api/projects/status/github/krlmlr/kimisc?branch=master" alt="AppVeyor Build Status"/></a> <a href="https://codecov.io/github/krlmlr/kimisc?branch=master"><img src="https://codecov.io/github/krlmlr/kimisc/coverage.svg?branch=master" alt="codecov.io"/></a></h1>
+    <h1>kimisc <a href="https://cran.rstudio.com/web/packages/kimisc/"><img src="http://www.r-pkg.org/badges/version/kimisc" alt="CRAN"/></a></h1>
 
-<p>A collection of useful functions not found anywhere else. Install from CRAN using</p>
+<p>A collection of useful functions not found anywhere else.</p>
+
+<p><code>production</code>: <a href="https://app.wercker.com/project/bykey/956d581f6bb8958ec85fd7d2585d138b"><img src="https://app.wercker.com/status/956d581f6bb8958ec85fd7d2585d138b/s/production" alt="wercker status" title="wercker status"/></a> <a href="https://ci.appveyor.com/project/krlmlr/kimisc"><img src="https://ci.appveyor.com/api/projects/status/github/krlmlr/kimisc?branch=production&amp;svg=true" alt="AppVeyor Build Status"/></a> <a href="https://codecov.io/github/krlmlr/kimisc?branch=production"><img src="https://codecov.io/github/krlmlr/kimisc/coverage.svg?branch=production" alt="codecov.io"/></a></p>
+
+<p><code>master</code>: <a href="https://app.wercker.com/project/bykey/956d581f6bb8958ec85fd7d2585d138b"><img src="https://app.wercker.com/status/956d581f6bb8958ec85fd7d2585d138b/s/master" alt="wercker status" title="wercker status"/></a> <a href="https://ci.appveyor.com/project/krlmlr/kimisc"><img src="https://ci.appveyor.com/api/projects/status/github/krlmlr/kimisc?branch=master&amp;svg=true" alt="AppVeyor Build Status"/></a> <a href="https://codecov.io/github/krlmlr/kimisc?branch=master"><img src="https://codecov.io/github/krlmlr/kimisc/coverage.svg?branch=master" alt="codecov.io"/></a></p>
+
+<h2>Installation</h2>
 
 <pre><code>install.packages(&#39;kimisc&#39;)
 </code></pre>
 
-<p>or the lastest development version (with <code>devtools</code> 1.4 or later)</p>
+<p>or the latest stable version using</p>
+
+<pre><code>devtools::install_github(&#39;krlmlr/kimisc@production&#39;)
+</code></pre>
+
+<p>or the most recent development version using</p>
 
 <pre><code>devtools::install_github(&#39;krlmlr/kimisc&#39;)
 </code></pre>
@@ -62,6 +85,12 @@
         
       <li>
         <code><a href="coalesce.na.html">coalesce.na</a></code><br />Replaces NA values</li>
+            
+      <li>
+        <code><a href="cut_format.html">cut_format</a></code><br />Convert Numeric to Factor, with custom formatting</li>
+            
+      <li>
+        <code><a href="df_to_list.html">df_to_list</a></code><br />Converts a name-value data frame to a named list</li>
             
       <li>
         <code><a href="export.html">export</a></code><br />Exports to an environment</li>
@@ -86,6 +115,9 @@
             
       <li>
         <code><a href="kimisc-package.html">kimisc-package</a></code>(kimisc)<br />Kirill's miscellaneous functions</li>
+            
+      <li>
+        <code><a href="list_to_df.html">list_to_df</a></code><br />Converts a list to a name-value data frame</li>
             
       <li>
         <code><a href="nc.html">nc</a></code><br />Smart named vector</li>
@@ -129,10 +161,10 @@
         
     <h2>Dependencies</h2>
     <ul>
-      <li><strong>Depends</strong>: </li>
+      
       <li><strong>Imports</strong>: plyr, pryr</li>
       <li><strong>Suggests</strong>: testthat</li>
-      <li><strong>Extends</strong>: </li>
+      
     </ul>
     <h2>Authors</h2>
     <ul>
@@ -144,7 +176,7 @@
       
       <footer>
       <p class="pull-right"><a href="#">Back to top</a></p>
-<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://getbootstrap.com">bootstrap</a>.</p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
       </footer>
     </div>
   </body>

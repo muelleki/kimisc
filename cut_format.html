@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>ofactor. kimisc 0.2-3</title>
+<title>cut_format. kimisc 0.2-3</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -48,63 +48,62 @@
         
       </header>
       
-      <h1>Order-preserving factors</h1>
+      <h1>Convert Numeric to Factor, with custom formatting</h1>
 
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>ofactor(x&nbsp;=&nbsp;character(), ...)</div></pre>
+    <pre><div>cut_format(x, breaks, include.lowest&nbsp;=&nbsp;FALSE, right&nbsp;=&nbsp;TRUE, ordered_result&nbsp;=&nbsp;FALSE, ..., format_fun&nbsp;=&nbsp;format, sep&nbsp;=&nbsp;", ")</div></pre>
     
     <h2>Arguments</h2>
     <dl>
       <dt>x</dt>
-      <dd>A vector of data, usually taking a small number of distinct values.</dd>
+      <dd>a numeric vector which is to be converted to a factor by cutting.</dd>
+      <dt>breaks</dt>
+      <dd>either a numeric vector of two or more unique cut points or a
+    single number (greater than or equal to 2) giving the number of
+    intervals into which <code>x</code> is to be cut.</dd>
+      <dt>include.lowest</dt>
+      <dd>logical, indicating if an &#145;x[i]&#146; equal to
+    the lowest (or highest, for <code>right = FALSE</code>) &#145;breaks&#146;
+    value should be included.</dd>
+      <dt>right</dt>
+      <dd>logical, indicating if the intervals should be closed on
+    the right (and open on the left) or vice versa.</dd>
+      <dt>ordered_result</dt>
+      <dd>logical: should the result be an ordered factor?</dd>
       <dt>...</dt>
-      <dd>Other arguments passed on to <code><a href='http://www.inside-r.org/r-doc/base/factor'>factor</a></code>.</dd>
+      <dd>Passed to <code>cut</code></dd>
+      <dt>format_fun</dt>
+      <dd><code>[function(x): character]</code>
+A vectorized function that performs the desired formatting.  Default:
+<code><a href='http://www.inside-r.org/r-doc/base/format'>format</a></code></dd>
+      <dt>sep</dt>
+      <dd><code>[character(1)]</code>
+The separator between lower and upper end of the interval. Default:
+<code>", "</code></dd>
     </dl>
     
-    <div class="Value">
-      <h2>Value</h2>
-
-      <p><dl>
-A factor. See <code><a href='http://www.inside-r.org/r-doc/base/factor'>factor</a></code> for details.
-</dl></p>
-  
-    </div>
-
     <div class="Description">
       <h2>Description</h2>
 
-      <p>The function <code>ofactor</code> is a convenience wrapper for
-  <code>factor</code> that orders the levels as they appear in the data if the
-  <code>levels</code> argument is not specified.</p>
+      <p>This is an enhanced version of <code><a href='http://www.inside-r.org/r-doc/base/cut'>cut</a></code> that allows a custom
+formatting to be applied to the values.</p>
   
     </div>
-    
-    <h2 id="examples">Examples</h2>
-    <pre class="examples"><div class='input'>ofactor(3:1)
-</div>
-<div class='output'>[1] 3 2 1
-Levels: 3 2 1
-</div>
-<div class='input'>ofactor(9:12, exclude=11)
-</div>
-<div class='output'>[1] 9    10   &lt;NA&gt; 12  
-Levels: 9 10 12
-</div>
-<div class='input'>identical(ofactor(3:1, levels=1:3), factor(3:1))
-</div>
-<div class='output'>[1] TRUE
-</div></pre>
-  </div>
+      </div>
   <div class="span4">
     <!-- <ul>
-      <li>ofactor</li>
+      <li>cut_format</li>
     </ul>
     <ul>
       
     </ul> -->
       
+    <h2>See also</h2>
+    
+<a href = 'http://stackoverflow.com/q/14456371/946850'>http://stackoverflow.com/q/14456371/946850</a>
+
         
   </div>
 </div>
