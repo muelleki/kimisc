@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>cut_format. kimisc 0.2-4</title>
+<title>cut_format. kimisc 0.2-5</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">kimisc 0.2-4</a>
+      <a class="brand" href="#">kimisc 0.2-5</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -60,9 +60,7 @@
       <dt>x</dt>
       <dd>a numeric vector which is to be converted to a factor by cutting.</dd>
       <dt>breaks</dt>
-      <dd>either a numeric vector of two or more unique cut points or a
-    single number (greater than or equal to 2) giving the number of
-    intervals into which <code>x</code> is to be cut.</dd>
+      <dd>A numeric vector of two or more unique cut points</dd>
       <dt>include.lowest</dt>
       <dd>logical, indicating if an &#145;x[i]&#146; equal to
     the lowest (or highest, for <code>right = FALSE</code>) &#145;breaks&#146;
@@ -99,14 +97,14 @@ formatting to be applied to the values.</p>
     <h2 id="examples">Examples</h2>
     <pre class="examples"><div class='input'>cut_format(runif(10), seq(0, 1, by = 0.25), format_fun = function(x) paste(x * 100, &quot;%&quot;))
 </div>
-<div class='output'> [1] (0 %, 25 %]   (25 %, 50 %]  (75 %, 100 %] (0 %, 25 %]   (75 %, 100 %]
- [6] (50 %, 75 %]  (25 %, 50 %]  (50 %, 75 %]  (25 %, 50 %]  (25 %, 50 %] 
+<div class='output'> [1] (75 %, 100 %] (50 %, 75 %]  (0 %, 25 %]   (50 %, 75 %]  (50 %, 75 %] 
+ [6] (25 %, 50 %]  (25 %, 50 %]  (50 %, 75 %]  (25 %, 50 %]  (50 %, 75 %] 
 Levels: (0 %, 25 %] (25 %, 50 %] (50 %, 75 %] (75 %, 100 %]
 </div>
 <div class='input'>cut_format(runif(10), seq(0, 1, by = 0.25), paren = c(&quot;&lt;&quot;, &quot;{&quot;, &quot;&gt;&quot;, &quot;}&quot;))
 </div>
-<div class='output'> [1] &lt;0.50, 0.75} &lt;0.75, 1.00} &lt;0.25, 0.50} &lt;0.75, 1.00} &lt;0.75, 1.00}
- [6] &lt;0.00, 0.25} &lt;0.25, 0.50} &lt;0.50, 0.75} &lt;0.00, 0.25} &lt;0.75, 1.00}
+<div class='output'> [1] &lt;0.50, 0.75} &lt;0.00, 0.25} &lt;0.25, 0.50} &lt;0.75, 1.00} &lt;0.75, 1.00}
+ [6] &lt;0.25, 0.50} &lt;0.75, 1.00} &lt;0.50, 0.75} &lt;0.25, 0.50} &lt;0.50, 0.75}
 Levels: &lt;0.00, 0.25} &lt;0.25, 0.50} &lt;0.50, 0.75} &lt;0.75, 1.00}
 </div></pre>
   </div>
