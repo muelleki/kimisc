@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>cut_format. kimisc 0.2-6</title>
+<title>cut_format. kimisc 0.3</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">kimisc 0.2-6</a>
+      <a class="brand" href="#">kimisc 0.3</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -97,14 +97,14 @@ formatting to be applied to the values.</p>
     <h2 id="examples">Examples</h2>
     <pre class="examples"><div class='input'>cut_format(runif(10), seq(0, 1, by = 0.25), format_fun = function(x) paste(x * 100, &quot;%&quot;))
 </div>
-<div class='output'> [1] (75 %, 100 %] (25 %, 50 %]  (0 %, 25 %]   (25 %, 50 %]  (0 %, 25 %]  
- [6] (25 %, 50 %]  (25 %, 50 %]  (0 %, 25 %]   (75 %, 100 %] (75 %, 100 %]
+<div class='output'> [1] (25 %, 50 %]  (0 %, 25 %]   (50 %, 75 %]  (0 %, 25 %]   (50 %, 75 %] 
+ [6] (50 %, 75 %]  (75 %, 100 %] (25 %, 50 %]  (25 %, 50 %]  (25 %, 50 %] 
 Levels: (0 %, 25 %] (25 %, 50 %] (50 %, 75 %] (75 %, 100 %]
 </div>
 <div class='input'>cut_format(runif(10), seq(0, 1, by = 0.25), paren = c(&quot;&lt;&quot;, &quot;{&quot;, &quot;&gt;&quot;, &quot;}&quot;))
 </div>
-<div class='output'> [1] &lt;0.75, 1.00} &lt;0.75, 1.00} &lt;0.50, 0.75} &lt;0.00, 0.25} &lt;0.25, 0.50}
- [6] &lt;0.50, 0.75} &lt;0.75, 1.00} &lt;0.00, 0.25} &lt;0.00, 0.25} &lt;0.25, 0.50}
+<div class='output'> [1] &lt;0.50, 0.75} &lt;0.50, 0.75} &lt;0.25, 0.50} &lt;0.25, 0.50} &lt;0.50, 0.75}
+ [6] &lt;0.25, 0.50} &lt;0.00, 0.25} &lt;0.00, 0.25} &lt;0.75, 1.00} &lt;0.75, 1.00}
 Levels: &lt;0.00, 0.25} &lt;0.25, 0.50} &lt;0.50, 0.75} &lt;0.75, 1.00}
 </div></pre>
   </div>
