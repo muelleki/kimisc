@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Smart named list — nlist • kimisc</title>
+<title>Replaces NA values — coalesce.na-deprecated • kimisc</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -78,53 +78,56 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Smart named list</h1>
+    <h1>Replaces NA values</h1>
     </div>
 
     
-    <p>This function is a wrapper around <code>list()</code> that
-assigns names to unnamed arguments based on the unevaluated expression used
-in the call.</p>
+    <p>This (vectorized) function returns the first
+non-<code>NA</code> argument, similar to the SQL function
+<code>COALESCE</code>. If a vector or matrix is passed as first argument,
+the remaining arguments are recycled to generate a vector/matrix of
+the same dimension, and coalescing is done element by element.</p>
     
 
-    <pre class="usage"><span class='fu'>nlist</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>coalesce.na</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>x</th>
+      <td><p>The first value to coalesce.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>List items, possibly named</p></td>
+      <td><p>Other values to coalesce.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A named list.</p>
-    
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>http://stackoverflow.com/a/5043280/946850,
-http://tolstoy.newcastle.edu.au/R/e9/help/10/03/8392.html</p>
+    <p>A vector of the same length as <code>x</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>list</p>
+    <p>Other deprecated functions: <code><a href='df_to_list-deprecated.html'>df_to_list-deprecated</a></code>,
+  <code><a href='hms.to.seconds-deprecated.html'>hms.to.seconds-deprecated</a></code>,
+  <code><a href='kimisc-deprecated.html'>kimisc-deprecated</a></code>,
+  <code><a href='list_to_df-deprecated.html'>list_to_df-deprecated</a></code>,
+  <code><a href='nc-deprecated.html'>nc-deprecated</a></code>,
+  <code><a href='nlist-deprecated.html'>nlist-deprecated</a></code>,
+  <code><a href='ofactor-deprecated.html'>ofactor-deprecated</a></code>,
+  <code><a href='sample.rows-deprecated.html'>sample.rows-deprecated</a></code>,
+  <code><a href='seconds.to.hms-deprecated.html'>seconds.to.hms-deprecated</a></code>,
+  <code><a href='thisfile-deprecated.html'>thisfile-deprecated</a></code>,
+  <code><a href='tll-deprecated.html'>tll-deprecated</a></code>,
+  <code><a href='vswitch-deprecated.html'>vswitch-deprecated</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>; <span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span>; <span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fl'>3</span>
-<span class='fu'>nlist</span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='kw'>d</span><span class='kw'>=</span><span class='no'>c</span>)</div><div class='output co'>#&gt; $a
-#&gt; [1] 1
-#&gt; 
-#&gt; $b
-#&gt; [1] 2
-#&gt; 
-#&gt; $d
-#&gt; [1] 3
-#&gt; </div><div class='input'><span class='fu'>nlist</span>(<span class='fu'>mean</span>(<span class='fu'>c</span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='no'>c</span>)))</div><div class='output co'>#&gt; $`mean(c(a, b, c))`
-#&gt; [1] 2
-#&gt; </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>coalesce.na</span>(<span class='fl'>NA</span>, -<span class='fl'>1</span>)</div><div class='output co'>#&gt; <span class='message'>`coalesce.na()` is deprecated, use `dplyr::coalesce()` instead.</span></div><div class='output co'>#&gt; [1] -1</div><div class='input'><span class='fu'>coalesce.na</span>(<span class='fl'>5</span>, <span class='fl'>3</span>)</div><div class='output co'>#&gt; [1] 5</div><div class='input'><span class='fu'>coalesce.na</span>(<span class='fu'>c</span>(<span class='fl'>1</span>,<span class='fl'>NA</span>,<span class='fl'>NA</span>), <span class='fu'>c</span>(<span class='fl'>NA</span>,<span class='fl'>2</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: object length is not a multiple of first object length</span></div><div class='output co'>#&gt; [1]  1  2 NA</div><div class='input'><span class='fu'>coalesce.na</span>(<span class='fu'>matrix</span>(<span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>1</span>:<span class='fl'>3</span>), <span class='kw'>nrow</span><span class='kw'>=</span><span class='fl'>2</span>))</div><div class='output co'>#&gt;      [,1] [,2]
+#&gt; [1,]   NA    2
+#&gt; [2,]    1    3</div><div class='input'><span class='fu'>coalesce.na</span>(<span class='fl'>NA</span>)</div><div class='output co'>#&gt; [1] NA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -133,16 +136,10 @@ http://tolstoy.newcastle.edu.au/R/e9/help/10/03/8392.html</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#references">References</a></li>
-
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Hadley Wickham
 
   </div>
 </div>

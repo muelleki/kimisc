@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Transposes a list of lists — tll • kimisc</title>
+<title>Vectorized switch — vswitch-deprecated • kimisc</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -78,82 +78,62 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Transposes a list of lists</h1>
+    <h1>Vectorized switch</h1>
     </div>
 
     
-    <p>The argument is assumed to be a list of \(n\) (named) lists
-with length \(m\) each.  It is converted to a (named) list of \(m\)
-elements with length \(n\) each.</p>
+    <p>The function <code>vswitch</code> is a vectorized version of
+<code><a href='http://www.rdocumentation.org/packages/base/topics/switch'>base::switch()</a></code> optimized for performance.</p>
     
 
-    <pre class="usage"><span class='fu'>tll</span>(<span class='no'>l</span>)</pre>
+    <pre class="usage"><span class='fu'>vswitch</span>(<span class='no'>EXPR</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>l</th>
-      <td><p>List of lists, possibly named.</p></td>
+      <th>EXPR</th>
+      <td><p>an expression evaluating to a number or a character
+    string.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>the list of alternatives.  If it is intended that
+    <code>EXPR</code> has a character-string value these will be
+    named, perhaps except for one alternative to be used as a
+    &#8216;default&#8217; value.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list of lists corresponding to a transposition of the argument.</p>
+    <p>The value of one of the elements of <code>...</code>,
+or <code>NA</code> whenever no element is selected.
+Contrary to <code><a href='http://www.rdocumentation.org/packages/base/topics/switch'>base::switch()</a></code> the result is
+always visible.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Only the <code>EXPR</code> argument is treated as a vector. In particular,
+if any of the alternatives (or the default alternative) is a vector, the
+result will be a list of vectors.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='http://www.rdocumentation.org/packages/base/topics/t'>base::t()</a></code></p>
+    <p>Other deprecated functions: <code><a href='coalesce.na-deprecated.html'>coalesce.na-deprecated</a></code>,
+  <code><a href='df_to_list-deprecated.html'>df_to_list-deprecated</a></code>,
+  <code><a href='hms.to.seconds-deprecated.html'>hms.to.seconds-deprecated</a></code>,
+  <code><a href='kimisc-deprecated.html'>kimisc-deprecated</a></code>,
+  <code><a href='list_to_df-deprecated.html'>list_to_df-deprecated</a></code>,
+  <code><a href='nc-deprecated.html'>nc-deprecated</a></code>,
+  <code><a href='nlist-deprecated.html'>nlist-deprecated</a></code>,
+  <code><a href='ofactor-deprecated.html'>ofactor-deprecated</a></code>,
+  <code><a href='sample.rows-deprecated.html'>sample.rows-deprecated</a></code>,
+  <code><a href='seconds.to.hms-deprecated.html'>seconds.to.hms-deprecated</a></code>,
+  <code><a href='thisfile-deprecated.html'>thisfile-deprecated</a></code>,
+  <code><a href='tll-deprecated.html'>tll-deprecated</a></code></p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>tll</span>(<span class='fu'>list</span>(<span class='fu'>list</span>(<span class='fl'>1</span>, <span class='fl'>2</span>), <span class='fu'>list</span>(<span class='fl'>3</span>, <span class='fl'>4</span>)))</div><div class='output co'>#&gt; [[1]]
-#&gt; [[1]][[1]]
-#&gt; [1] 1
-#&gt; 
-#&gt; [[1]][[2]]
-#&gt; [1] 3
-#&gt; 
-#&gt; 
-#&gt; [[2]]
-#&gt; [[2]][[1]]
-#&gt; [1] 2
-#&gt; 
-#&gt; [[2]][[2]]
-#&gt; [1] 4
-#&gt; 
-#&gt; </div><div class='input'><span class='fu'>tll</span>(<span class='fu'>list</span>(<span class='fu'>list</span>(<span class='kw'>a</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>b</span><span class='kw'>=</span><span class='fl'>2</span>), <span class='fu'>list</span>(<span class='kw'>a</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>b</span><span class='kw'>=</span><span class='fl'>4</span>)))</div><div class='output co'>#&gt; $a
-#&gt; $a[[1]]
-#&gt; [1] 1
-#&gt; 
-#&gt; $a[[2]]
-#&gt; [1] 3
-#&gt; 
-#&gt; 
-#&gt; $b
-#&gt; $b[[1]]
-#&gt; [1] 2
-#&gt; 
-#&gt; $b[[2]]
-#&gt; [1] 4
-#&gt; 
-#&gt; </div><div class='input'><span class='fu'>tll</span>(<span class='fu'>list</span>(<span class='kw'>x</span><span class='kw'>=</span><span class='fu'>list</span>(<span class='kw'>a</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>b</span><span class='kw'>=</span><span class='fl'>2</span>), <span class='kw'>y</span><span class='kw'>=</span><span class='fu'>list</span>(<span class='kw'>a</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>b</span><span class='kw'>=</span><span class='fl'>4</span>)))</div><div class='output co'>#&gt; $a
-#&gt; $a$x
-#&gt; [1] 1
-#&gt; 
-#&gt; $a$y
-#&gt; [1] 3
-#&gt; 
-#&gt; 
-#&gt; $b
-#&gt; $b$x
-#&gt; [1] 2
-#&gt; 
-#&gt; $b$y
-#&gt; [1] 4
-#&gt; 
-#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -162,10 +142,10 @@ elements with length \(n\) each.</p>
       
       <li><a href="#value">Value</a></li>
 
+      <li><a href="#details">Details</a></li>
+
       <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>

@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Converts a time value given in H:M:S format to the number of seconds
-since midnight — hms.to.seconds • kimisc</title>
+<title>Determines the path of the currently running script — thisfile-deprecated • kimisc</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -79,53 +78,83 @@ since midnight — hms.to.seconds • kimisc</title>
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Converts a time value given in H:M:S format to the number of seconds
-since midnight</h1>
+    <h1>Determines the path of the currently running script</h1>
     </div>
 
     
-    <p>This function is very similar to <code>strptime</code> with the
-<code>%X</code> conversion specification. Anything with three numbers between
-two colons is interpreted as a time, no consistency check is performed on
-the actual hour, minute and second values. Thus, strings like 25:15:00 and
-23:78:101 also will be converted. Incorrectly formatted strings are
-converted to <code>NA</code> with a warning.</p>
+    <p><span style="R">R</span> does not store nor export the path of the currently running
+script.  This is an attempt to circumvent this limitation by applying
+heuristics (such as call stack and argument inspection) that work in many
+cases.</p>
     
 
-    <pre class="usage"><span class='fu'>hms.to.seconds</span>(<span class='no'>x</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>A (vector of) strings in H:M:S format.</p></td>
-    </tr>
-    </table>
-    
+    <pre class="usage"><span class='fu'>thisfile</span>()
+
+<span class='fu'>thisfile_source</span>()
+
+<span class='fu'>thisfile_r</span>()
+
+<span class='fu'>thisfile_rscript</span>()
+
+<span class='fu'>thisfile_knit</span>()</pre>
+        
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A (vector of) integer values of the same length as <code>x</code>.</p>
+    <p>The path of the currently running script, NULL if it cannot be
+determined.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This functions currently work only if the script was <code>source</code>d,
+processed with <code>knitr</code>,
+or run with <code>Rscript</code> or using the <code>--file</code> parameter to the
+<code>R</code> executable.  For code run with <code>Rscript</code>, the exact value
+of the parameter passed to <code>Rscript</code> is returned.</p>
+    
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>http://stackoverflow.com/q/1815606/946850</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='http://www.rdocumentation.org/packages/base/topics/strptime'>base::strptime()</a></code></p>
+    <p><code><a href='http://www.rdocumentation.org/packages/base/topics/source'>base::source()</a></code>, <code><a href='http://www.rdocumentation.org/packages/utils/topics/Rscript'>utils::Rscript()</a></code>, <code><a href='http://www.rdocumentation.org/packages/base/topics/getwd'>base::getwd()</a></code></p>
+<p>Other deprecated functions: <code><a href='coalesce.na-deprecated.html'>coalesce.na-deprecated</a></code>,
+  <code><a href='df_to_list-deprecated.html'>df_to_list-deprecated</a></code>,
+  <code><a href='hms.to.seconds-deprecated.html'>hms.to.seconds-deprecated</a></code>,
+  <code><a href='kimisc-deprecated.html'>kimisc-deprecated</a></code>,
+  <code><a href='list_to_df-deprecated.html'>list_to_df-deprecated</a></code>,
+  <code><a href='nc-deprecated.html'>nc-deprecated</a></code>,
+  <code><a href='nlist-deprecated.html'>nlist-deprecated</a></code>,
+  <code><a href='ofactor-deprecated.html'>ofactor-deprecated</a></code>,
+  <code><a href='sample.rows-deprecated.html'>sample.rows-deprecated</a></code>,
+  <code><a href='seconds.to.hms-deprecated.html'>seconds.to.hms-deprecated</a></code>,
+  <code><a href='tll-deprecated.html'>tll-deprecated</a></code>,
+  <code><a href='vswitch-deprecated.html'>vswitch-deprecated</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>hms.to.seconds</span>(<span class='fu'>c</span>(<span class='st'>"00:00:01"</span>, <span class='st'>"00:01:00"</span>, <span class='st'>"01:00:00"</span>))</div><div class='output co'>#&gt; [1]    1   60 3600</div><div class='input'><span class='fu'>hms.to.seconds</span>(<span class='fu'>c</span>(<span class='st'>"25:15:00"</span>, <span class='st'>"23:78:101"</span>))</div><div class='output co'>#&gt; [1] 90900 87581</div><div class='input'><span class='fu'>hms.to.seconds</span>(<span class='st'>"invalid"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; [1] NA</div></pre>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'>thisfile</span>()
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#references">References</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
+
+    <h2>Author</h2>
+    
+Kirill Müller, Hadley Wickham, Michael R. Head
 
   </div>
 </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Smart named vector — nc • kimisc</title>
+<title>Smart named vector — nc-deprecated • kimisc</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -109,12 +109,24 @@ http://tolstoy.newcastle.edu.au/R/e9/help/10/03/8392.html</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>c, <a href='nlist.html'>nlist</a></p>
+    <p>c, <a href='nlist-deprecated.html'>nlist</a></p>
+<p>Other deprecated functions: <code><a href='coalesce.na-deprecated.html'>coalesce.na-deprecated</a></code>,
+  <code><a href='df_to_list-deprecated.html'>df_to_list-deprecated</a></code>,
+  <code><a href='hms.to.seconds-deprecated.html'>hms.to.seconds-deprecated</a></code>,
+  <code><a href='kimisc-deprecated.html'>kimisc-deprecated</a></code>,
+  <code><a href='list_to_df-deprecated.html'>list_to_df-deprecated</a></code>,
+  <code><a href='nlist-deprecated.html'>nlist-deprecated</a></code>,
+  <code><a href='ofactor-deprecated.html'>ofactor-deprecated</a></code>,
+  <code><a href='sample.rows-deprecated.html'>sample.rows-deprecated</a></code>,
+  <code><a href='seconds.to.hms-deprecated.html'>seconds.to.hms-deprecated</a></code>,
+  <code><a href='thisfile-deprecated.html'>thisfile-deprecated</a></code>,
+  <code><a href='tll-deprecated.html'>tll-deprecated</a></code>,
+  <code><a href='vswitch-deprecated.html'>vswitch-deprecated</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>; <span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span>; <span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fl'>3</span>
-<span class='fu'>nc</span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='kw'>d</span><span class='kw'>=</span><span class='no'>c</span>)</div><div class='output co'>#&gt; a b d 
+<span class='fu'>nc</span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='kw'>d</span><span class='kw'>=</span><span class='no'>c</span>)</div><div class='output co'>#&gt; <span class='message'>`nc()` is deprecated, use `tibble::lst()` instead.</span></div><div class='output co'>#&gt; a b d 
 #&gt; 1 2 3 </div><div class='input'><span class='fu'>nc</span>(<span class='fu'>mean</span>(<span class='fu'>c</span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='no'>c</span>)))</div><div class='output co'>#&gt; mean(c(a, b, c)) 
 #&gt;                2 </div></pre>
   </div>

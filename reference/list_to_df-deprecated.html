@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Vectorized switch — vswitch • kimisc</title>
+<title>Converts a list to a name-value data frame — list_to_df-deprecated • kimisc</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -78,45 +78,41 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Vectorized switch</h1>
+    <h1>Converts a list to a name-value data frame</h1>
     </div>
 
     
-    <p>The function <code>vswitch</code> is a vectorized version of
-<code><a href='http://www.rdocumentation.org/packages/base/topics/switch'>base::switch()</a></code> optimized for performance.</p>
+    <p>This function coerces its input to a list and returns a data frame with as many
+rows as there are list items in the input, and two columns
+(one for the names, one for the values). If the list is not named, the
+natural sequence will be used as item names.</p>
     
 
-    <pre class="usage"><span class='fu'>vswitch</span>(<span class='no'>EXPR</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>list_to_df</span>(<span class='no'>list_for_df</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>EXPR</th>
-      <td><p>an expression evaluating to a number or a character
-    string.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>the list of alternatives.  If it is intended that
-    <code>EXPR</code> has a character-string value these will be
-    named, perhaps except for one alternative to be used as a
-    &#8216;default&#8217; value.</p></td>
+      <th>list_for_df</th>
+      <td><p>The object to be converted to a data frame</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>The value of one of the elements of <code>...</code>,
-or <code>NA</code> whenever no element is selected.
-Contrary to <code><a href='http://www.rdocumentation.org/packages/base/topics/switch'>base::switch()</a></code> the result is
-always visible.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Only the <code>EXPR</code> argument is treated as a vector. In particular,
-if any of the alternatives (or the default alternative) is a vector, the
-result will be a list of vectors.</p>
+    <p>Other deprecated functions: <code><a href='coalesce.na-deprecated.html'>coalesce.na-deprecated</a></code>,
+  <code><a href='df_to_list-deprecated.html'>df_to_list-deprecated</a></code>,
+  <code><a href='hms.to.seconds-deprecated.html'>hms.to.seconds-deprecated</a></code>,
+  <code><a href='kimisc-deprecated.html'>kimisc-deprecated</a></code>,
+  <code><a href='nc-deprecated.html'>nc-deprecated</a></code>,
+  <code><a href='nlist-deprecated.html'>nlist-deprecated</a></code>,
+  <code><a href='ofactor-deprecated.html'>ofactor-deprecated</a></code>,
+  <code><a href='sample.rows-deprecated.html'>sample.rows-deprecated</a></code>,
+  <code><a href='seconds.to.hms-deprecated.html'>seconds.to.hms-deprecated</a></code>,
+  <code><a href='thisfile-deprecated.html'>thisfile-deprecated</a></code>,
+  <code><a href='tll-deprecated.html'>tll-deprecated</a></code>,
+  <code><a href='vswitch-deprecated.html'>vswitch-deprecated</a></code></p>
     
 
   </div>
@@ -125,9 +121,7 @@ result will be a list of vectors.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

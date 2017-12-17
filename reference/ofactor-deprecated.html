@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Converts a time value given as number of seconds since midnight to the
-H:M:S format — seconds.to.hms • kimisc</title>
+<title>Order-preserving factors — ofactor-deprecated • kimisc</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -79,39 +78,54 @@ H:M:S format — seconds.to.hms • kimisc</title>
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Converts a time value given as number of seconds since midnight to the
-H:M:S format</h1>
+    <h1>Order-preserving factors</h1>
     </div>
 
     
-    <p>This function is very similar to <code>strftime</code> with the
-<code>%X</code> conversion specification. Hour values larger than 24 are
-permitted. Fractions will be rounded down to the next integer. Non-numeric
-values are coerced to <code>NA</code> with a warning.</p>
+    <p>The function <code>ofactor()</code> is a convenience wrapper for
+<code>factor()</code> that orders the levels as they appear in the data if the
+<code>levels</code> argument is not specified.</p>
     
 
-    <pre class="usage"><span class='fu'>seconds.to.hms</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>ofactor</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>character</span>(), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A (vector of) numbers.</p></td>
+      <td><p>A vector of data, usually taking a small number of distinct values.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Other arguments passed on to <code><a href='http://www.rdocumentation.org/packages/base/topics/factor'>base::factor()</a></code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A (vector of) character values of the same length as <code>x</code>.</p>
+    <p>A factor. See <code><a href='http://www.rdocumentation.org/packages/base/topics/factor'>base::factor()</a></code> for details.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='http://www.rdocumentation.org/packages/base/topics/strptime'>base::strftime()</a></code></p>
+    <p>Other deprecated functions: <code><a href='coalesce.na-deprecated.html'>coalesce.na-deprecated</a></code>,
+  <code><a href='df_to_list-deprecated.html'>df_to_list-deprecated</a></code>,
+  <code><a href='hms.to.seconds-deprecated.html'>hms.to.seconds-deprecated</a></code>,
+  <code><a href='kimisc-deprecated.html'>kimisc-deprecated</a></code>,
+  <code><a href='list_to_df-deprecated.html'>list_to_df-deprecated</a></code>,
+  <code><a href='nc-deprecated.html'>nc-deprecated</a></code>,
+  <code><a href='nlist-deprecated.html'>nlist-deprecated</a></code>,
+  <code><a href='sample.rows-deprecated.html'>sample.rows-deprecated</a></code>,
+  <code><a href='seconds.to.hms-deprecated.html'>seconds.to.hms-deprecated</a></code>,
+  <code><a href='thisfile-deprecated.html'>thisfile-deprecated</a></code>,
+  <code><a href='tll-deprecated.html'>tll-deprecated</a></code>,
+  <code><a href='vswitch-deprecated.html'>vswitch-deprecated</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>seconds.to.hms</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>60</span>, <span class='fl'>3600.5</span>))</div><div class='output co'>#&gt; [1] "00:00:01" "00:01:00" "01:00:00"</div><div class='input'><span class='fu'>seconds.to.hms</span>(<span class='fu'>c</span>(<span class='fl'>100000</span>, -<span class='fl'>4000.5</span>))</div><div class='output co'>#&gt; [1] "27:46:40"  "-01:06:41"</div><div class='input'><span class='fu'>seconds.to.hms</span>(<span class='st'>"invalid"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; [1] NA</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>ofactor</span>(<span class='fl'>3</span>:<span class='fl'>1</span>)</div><div class='output co'>#&gt; <span class='message'>`ofactor()` is deprecated, use `forcats::fct_inorder()` instead.</span></div><div class='output co'>#&gt; [1] 3 2 1
+#&gt; Levels: 3 2 1</div><div class='input'><span class='fu'>ofactor</span>(<span class='fl'>9</span>:<span class='fl'>12</span>, <span class='kw'>exclude</span><span class='kw'>=</span><span class='fl'>11</span>)</div><div class='output co'>#&gt; [1] 9    10   &lt;NA&gt; 12  
+#&gt; Levels: 9 10 12</div><div class='input'><span class='fu'>identical</span>(<span class='fu'>ofactor</span>(<span class='fl'>3</span>:<span class='fl'>1</span>, <span class='kw'>levels</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>3</span>), <span class='fu'>factor</span>(<span class='fl'>3</span>:<span class='fl'>1</span>))</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
